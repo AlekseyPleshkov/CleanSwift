@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rcT-DQ-5b4">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="MkJ-15-oWq">
+            <objects>
+                <navigationController id="rcT-DQ-5b4" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="AZ9-Ww-8yw">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="s5M-jv-uMc" kind="relationship" relationship="rootViewController" id="Ukp-SC-xPR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6zz-Ah-fhE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-435" y="129"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="g4c-KV-Qmy">
+            <objects>
+                <viewController id="s5M-jv-uMc" customClass="HomeViewController" customModule="CleanSwiftRouter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yte-Cx-HtH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter detail message" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jRp-fs-e6e">
+                                <rect key="frame" x="100" y="148" width="214" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="fieldMessageDidChange:" destination="s5M-jv-uMc" eventType="editingChanged" id="Sy9-dE-bHr"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RdD-qt-biG">
+                                <rect key="frame" x="117" y="218" width="180" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Show Detail with Segue"/>
+                                <connections>
+                                    <segue destination="8si-J3-plC" kind="show" identifier="Detail" id="bzj-nP-k6J"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2l9-IT-LV3">
+                                <rect key="frame" x="104.5" y="271" width="205" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Show Detail without Segue"/>
+                                <connections>
+                                    <action selector="buttonShowDetailWithoutSegue:" destination="s5M-jv-uMc" eventType="touchUpInside" id="zNb-1Z-XhG"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="jRp-fs-e6e" firstAttribute="top" secondItem="GAh-tS-yA5" secondAttribute="top" constant="60" id="3VB-2D-kqe"/>
+                            <constraint firstItem="RdD-qt-biG" firstAttribute="centerX" secondItem="GAh-tS-yA5" secondAttribute="centerX" id="4lE-Lf-acH"/>
+                            <constraint firstItem="2l9-IT-LV3" firstAttribute="centerX" secondItem="GAh-tS-yA5" secondAttribute="centerX" id="6Uc-Pf-G47"/>
+                            <constraint firstItem="2l9-IT-LV3" firstAttribute="top" secondItem="RdD-qt-biG" secondAttribute="bottom" constant="20" id="TL0-E1-wl5"/>
+                            <constraint firstItem="jRp-fs-e6e" firstAttribute="leading" secondItem="GAh-tS-yA5" secondAttribute="leading" constant="100" id="p5u-o5-c1E"/>
+                            <constraint firstItem="RdD-qt-biG" firstAttribute="top" secondItem="jRp-fs-e6e" secondAttribute="bottom" constant="40" id="ri0-DV-FHf"/>
+                            <constraint firstItem="GAh-tS-yA5" firstAttribute="trailing" secondItem="jRp-fs-e6e" secondAttribute="trailing" constant="100" id="ydQ-Y2-AgH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GAh-tS-yA5"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="IAZ-6b-NVB"/>
+                    <connections>
+                        <outlet property="buttonShowDetailWithSegue" destination="RdD-qt-biG" id="ywR-1u-9GO"/>
+                        <outlet property="buttonShowDetailWithoutSegue" destination="2l9-IT-LV3" id="0qA-Iu-Nmm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lo1-bo-DC1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="479" y="126"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="RqZ-TN-uVl">
+            <objects>
+                <viewController storyboardIdentifier="Detail" id="8si-J3-plC" customClass="DetailViewController" customModule="CleanSwiftRouter" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cca-wS-rY2">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detail message" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qDG-e9-Bzl">
+                                <rect key="frame" x="16" y="148" width="382" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2Xf-Jz-Myx" firstAttribute="trailing" secondItem="qDG-e9-Bzl" secondAttribute="trailing" constant="16" id="6ty-69-ZFT"/>
+                            <constraint firstItem="qDG-e9-Bzl" firstAttribute="top" secondItem="2Xf-Jz-Myx" secondAttribute="top" constant="60" id="dTR-bw-2my"/>
+                            <constraint firstItem="qDG-e9-Bzl" firstAttribute="leading" secondItem="2Xf-Jz-Myx" secondAttribute="leading" constant="16" id="sAs-RZ-H7z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2Xf-Jz-Myx"/>
+                    </view>
+                    <connections>
+                        <outlet property="labelMessage" destination="qDG-e9-Bzl" id="12f-ON-FVr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x0O-NO-beb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1409" y="126"/>
+        </scene>
+    </scenes>
+</document>
