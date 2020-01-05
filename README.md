@@ -2,7 +2,7 @@
 
 Examples and templates for iOS architecture Clean Swift
 
-![Clean Swift Scheme](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/Resources/cleanswift.jpg)
+![Clean Swift Scheme](https://github.com/AlekseyPleshkov/CleanSwift/blob/master/Resources/cleanswift.jpg?raw=true)
 
 # 🗄 Examples
 
