@@ -18,7 +18,7 @@ final class PostsViewController: UITableViewController {
   // MARK: - Public Properties
 
   var interactor: PostsBusinessLogic?
-  var router: (NSObjectProtocol & PostsRoutingLogic & PostsDataPassing)?
+  var router: (PostsRoutingLogic & PostsDataPassing)?
 
   // MARK: - Private Properties
 

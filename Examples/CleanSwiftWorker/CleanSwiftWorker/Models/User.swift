@@ -1,14 +1,14 @@
 //
 //  User.swift
-//  CleanSwiftWorker
+//  CleanSwiftTests
 //
-//  Created by Aleksey Pleshkov on 15/06/2019.
+//  Created by Aleksey Pleshkov on 28.10.2019.
 //  Copyright © 2019 Aleksey Pleshkov. All rights reserved.
 //
 
 import Foundation
 
-struct User: Codable {
+struct User: Decodable {
   let id: Int
   let name: String
   let username: String

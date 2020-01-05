@@ -4,9 +4,9 @@ Examples and templates for iOS architecture Clean Swift
 
 # 🗄 Examples
 
-* [Router](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/Examples/CleanSwiftRouter). Example for work with router
-* [Worker](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/Examples/CleanSwiftWorker). Example for work with workers
-* [Unit Tests](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/Examples/CleanSwiftTests). Example for write tests for scenes
+* [Router](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/Examples/CleanSwiftRouter). Example of work with Routers (Old segue version). 
+* [Worker](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/Examples/CleanSwiftWorker). Example of work with Workers and Routers.
+* [Unit Tests](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/Examples/CleanSwiftTests). Example of write tests for scene.
 
 # 📦 Templates
 

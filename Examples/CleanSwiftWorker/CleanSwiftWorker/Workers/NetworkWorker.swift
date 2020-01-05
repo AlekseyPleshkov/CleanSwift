@@ -1,27 +1,26 @@
 //
 //  NetworkWorker.swift
-//  CleanSwiftWorker
+//  CleanSwiftTests
 //
-//  Created by Aleksey Pleshkov on 10/06/2019.
+//  Created by Aleksey Pleshkov on 28.10.2019.
 //  Copyright © 2019 Aleksey Pleshkov. All rights reserved.
 //
 
 import Foundation
 
-struct NetworkWorker {
+protocol NetworkWorkingLogic {
+  /// Отправка запроса к API
+  func sendRequest(to: URL, params: [String: String], completion: @escaping (Data?, Error?) -> Void)
+}
+
+final class NetworkWorker: NetworkWorkingLogic {
 
   // MARK: - Private Properties
 
   private let session = URLSession.shared
 
-  // MARK: - Public Methods
+  // MARK: - NetworkWorkingLogic
 
-  /// Глобальный Worker. Отправка запроса к API
-  ///
-  /// - Parameters:
-  ///   - to: Ссылка, на которую делать запрос
-  ///   - params: Список параметров ссылки
-  ///   - completion: Возвращает данные или ошибку
   func sendRequest(to: URL, params: [String: String], completion: @escaping (Data?, Error?) -> Void) {
     guard var urlComponents = URLComponents(url: to, resolvingAgainstBaseURL: false) else {
       completion(nil, nil)

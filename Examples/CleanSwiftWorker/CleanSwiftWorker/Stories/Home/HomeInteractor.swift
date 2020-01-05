@@ -1,8 +1,8 @@
 //
 //  HomeInteractor.swift
-//  CleanSwiftWorker
+//  CleanSwiftTests
 //
-//  Created by Aleksey Pleshkov on 10/06/2019.
+//  Created by Aleksey Pleshkov on 28.10.2019.
 //  Copyright © 2019 Aleksey Pleshkov. All rights reserved.
 //
 
@@ -17,7 +17,7 @@ protocol HomeBusinessLogic {
 }
 
 protocol HomeDataStore {
-  var users: [User]? { get }
+  var users: [User] { get }
   var selectedUser: User? { get }
 }
 
@@ -26,19 +26,16 @@ final class HomeInteractor: HomeBusinessLogic, HomeDataStore {
   // MARK: - Public
 
   var presenter: HomePresentationLogic?
+  lazy var worker: HomeWorkingLogic = HomeWorker()
 
-  var users: [User]?
+  var users: [User] = []
   var selectedUser: User?
-
-  // MARK: - Private
-
-  /// Ссылка на локальный Worker сцены
-  private lazy var homeWorker = HomeWorker()
 
   // MARK: - HomeBusinessLogic
 
   func fetchUsers(_ request: HomeModels.FetchUsers.Request) {
-    homeWorker.fetchUsers { [unowned self] users in
+    worker.fetchUsers { users in
+      let users = users ?? []
       let response = HomeModels.FetchUsers.Response(users: users)
 
       self.users = users
@@ -47,10 +44,10 @@ final class HomeInteractor: HomeBusinessLogic, HomeDataStore {
   }
 
   func selectUser(_ request: HomeModels.SelectUser.Request) {
-    let user = users?[request.index]
-    let response = HomeModels.SelectUser.Response(user: user)
-
-    selectedUser = user
-    presenter?.presentSelectedUser(response)
+    guard !users.isEmpty, request.index < users.count else {
+      return
+    }
+    
+    selectedUser = users[request.index]
   }
 }

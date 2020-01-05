@@ -1,6 +1,6 @@
 //
 //  PostsInteractor.swift
-//  CleanSwiftWorker
+//  CleanSwiftTests
 //
 //  Created by Aleksey Pleshkov on 15/06/2019.
 //  Copyright © 2019 Aleksey Pleshkov. All rights reserved.
@@ -15,7 +15,7 @@ protocol PostsBusinessLogic {
 
 protocol PostsDataStore {
   var user: User? { get set }
-  var posts: [Post]? { get }
+  var posts: [Post] { get }
 }
 
 final class PostsInteractor: PostsBusinessLogic, PostsDataStore {
@@ -23,13 +23,10 @@ final class PostsInteractor: PostsBusinessLogic, PostsDataStore {
   // MARK: - Public Properties
 
   var presenter: PostsPresentationLogic?
+  lazy var worker: PostsWorkingLogic = PostsWorker()
 
   var user: User?
-  var posts: [Post]?
-
-  // MARK: - Private Properties
-
-  private lazy var postsWorker = PostsWorker()
+  var posts: [Post] = []
 
   // MARK: - PostsBusinessLogic
 
@@ -38,7 +35,8 @@ final class PostsInteractor: PostsBusinessLogic, PostsDataStore {
       return
     }
 
-    postsWorker.fetchPosts(userId: user.id) { [unowned self] posts in
+    worker.fetchPosts(userId: user.id) { posts in
+      let posts = posts ?? []
       let response = PostsModels.FetchPosts.Response(owner: user, posts: posts)
 
       self.posts = posts

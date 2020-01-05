@@ -1,6 +1,6 @@
 //
 //  PostsPresenter.swift
-//  CleanSwiftWorker
+//  CleanSwiftTests
 //
 //  Created by Aleksey Pleshkov on 15/06/2019.
 //  Copyright © 2019 Aleksey Pleshkov. All rights reserved.
@@ -19,12 +19,10 @@ final class PostsPresenter: PostsPresentationLogic {
 
   weak var viewController: PostsDisplayLogic?
 
-  // MARK: - Private Properties
-
   // MARK: - PostsPresentationLogic
 
   func presentFetchedPosts(_ response: PostsModels.FetchPosts.Response) {
-    let sortedPosts = response.posts?.sorted { (firstPost, secondPost) in
+    let sortedPosts = response.posts.sorted { (firstPost, secondPost) in
       return firstPost.title.count < secondPost.title.count
     }
     let viewModel = PostsModels.FetchPosts.ViewModel(owner: response.owner, posts: sortedPosts)

@@ -18,7 +18,7 @@ final class HomeViewController: UITableViewController {
   // MARK: - Public Properties
 
   var interactor: HomeBusinessLogic?
-  var router: (NSObjectProtocol & HomeRoutingLogic & HomeDataPassing)?
+  var router: (HomeRoutingLogic & HomeDataPassing)?
 
   // MARK: - Private Properties
 

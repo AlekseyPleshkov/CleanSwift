@@ -1,6 +1,6 @@
 //
 //  PostsViewController.swift
-//  CleanSwiftWorker
+//  CleanSwiftTests
 //
 //  Created by Aleksey Pleshkov on 15/06/2019.
 //  Copyright © 2019 Aleksey Pleshkov. All rights reserved.
@@ -13,20 +13,16 @@ protocol PostsDisplayLogic: class {
   func displayFetchedPosts(_ viewModel: PostsModels.FetchPosts.ViewModel)
 }
 
-final class PostsViewController: UIViewController {
+final class PostsViewController: UITableViewController {
 
   // MARK: - Public Properties
 
-  private(set) var router: (NSObjectProtocol & PostsRoutingLogic & PostsDataPassing)?
+  var interactor: PostsBusinessLogic?
+  var router: (PostsRoutingLogic & PostsDataPassing)?
 
   // MARK: - Private Properties
 
-  private var interactor: PostsBusinessLogic?
   private var posts: [Post] = []
-
-  // MARK: - UI Outlets
-  
-  @IBOutlet weak var tablePosts: UITableView!
 
   // MARK: - Init
 
@@ -56,21 +52,16 @@ final class PostsViewController: UIViewController {
 
   // MARK: - Lifecycle
 
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-
-    requestToFetchPosts()
-  }
-
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    requestToFetchPosts()
   }
 
   // MARK: - Requests
 
   private func requestToFetchPosts() {
     let request = PostsModels.FetchPosts.Request()
-
     interactor?.fetchPosts(request)
   }
 }
@@ -80,24 +71,21 @@ final class PostsViewController: UIViewController {
 extension PostsViewController: PostsDisplayLogic {
 
   func displayFetchedPosts(_ viewModel: PostsModels.FetchPosts.ViewModel) {
-    if let fetchedPosts = viewModel.posts {
-      posts = fetchedPosts
-      tablePosts.reloadData()
-    }
-
-    title = viewModel.owner?.name
+    title = viewModel.owner.name
+    posts = viewModel.posts
+    tableView.reloadData()
   }
 }
 
-// MARK: - UITableViewDataSource, UITableViewDelegate
+// MARK: - UITableViewDataSource
 
-extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
+extension PostsViewController {
 
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return posts.count
   }
 
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let post = posts[indexPath.row]
     let cell = tableView.dequeueReusableCell(withIdentifier: "CellPost", for: indexPath)
 

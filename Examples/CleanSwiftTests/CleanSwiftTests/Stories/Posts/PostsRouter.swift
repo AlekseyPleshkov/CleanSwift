@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc protocol PostsRoutingLogic {
+protocol PostsRoutingLogic {
 
 }
 
@@ -16,7 +16,7 @@ protocol PostsDataPassing {
   var dataStore: PostsDataStore? { get }
 }
 
-final class PostsRouter: NSObject, PostsRoutingLogic, PostsDataPassing {
+final class PostsRouter: PostsRoutingLogic, PostsDataPassing {
 
   // MARK: - Public Properties
   

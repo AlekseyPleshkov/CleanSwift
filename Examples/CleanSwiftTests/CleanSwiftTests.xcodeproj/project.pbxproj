@@ -207,11 +207,11 @@
 			isa = PBXGroup;
 			children = (
 				9A3F8C132366D1480073A6D9 /* Home.storyboard */,
-				9A3F8BF52366D0720073A6D9 /* HomeInteractor.swift */,
-				9A3F8BF32366D0720073A6D9 /* HomeModels.swift */,
-				9A3F8BF42366D0720073A6D9 /* HomePresenter.swift */,
-				9A3F8BF72366D0720073A6D9 /* HomeRouter.swift */,
 				9A3F8BF82366D0720073A6D9 /* HomeViewController.swift */,
+				9A3F8BF52366D0720073A6D9 /* HomeInteractor.swift */,
+				9A3F8BF42366D0720073A6D9 /* HomePresenter.swift */,
+				9A3F8BF32366D0720073A6D9 /* HomeModels.swift */,
+				9A3F8BF72366D0720073A6D9 /* HomeRouter.swift */,
 				9A3F8BF62366D0720073A6D9 /* HomeWorker.swift */,
 			);
 			path = Home;
@@ -221,11 +221,11 @@
 			isa = PBXGroup;
 			children = (
 				9A7A086C2366D7F20090F871 /* Posts.storyboard */,
-				9A3F8C022366D07A0073A6D9 /* PostsInteractor.swift */,
-				9A3F8C002366D07A0073A6D9 /* PostsModels.swift */,
-				9A3F8BFF2366D07A0073A6D9 /* PostsPresenter.swift */,
-				9A3F8C012366D07A0073A6D9 /* PostsRouter.swift */,
 				9A3F8C032366D07A0073A6D9 /* PostsViewController.swift */,
+				9A3F8C022366D07A0073A6D9 /* PostsInteractor.swift */,
+				9A3F8BFF2366D07A0073A6D9 /* PostsPresenter.swift */,
+				9A3F8C002366D07A0073A6D9 /* PostsModels.swift */,
+				9A3F8C012366D07A0073A6D9 /* PostsRouter.swift */,
 				9A3F8C042366D07A0073A6D9 /* PostsWorker.swift */,
 			);
 			path = Posts;

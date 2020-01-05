@@ -1,6 +1,6 @@
 //
 //  HomeViewController.swift
-//  CleanSwiftWorker
+//  CleanSwiftTests
 //
 //  Created by Aleksey Pleshkov on 10/06/2019.
 //  Copyright © 2019 Aleksey Pleshkov. All rights reserved.
@@ -9,27 +9,20 @@
 import UIKit
 
 protocol HomeDisplayLogic: class {
-  /// Отобразить результат загрузки списка пользователей в таблице
+  /// Отобразить список загруженных пользователей
   func displayFetchedUsers(_ viewModel: HomeModels.FetchUsers.ViewModel)
-
-  /// Отобразить выбор пользователя из списка
-  func displaySelectedUser(_ viewModel: HomeModels.SelectUser.ViewModel)
 }
 
-final class HomeViewController: UIViewController {
+final class HomeViewController: UITableViewController {
 
   // MARK: - Public Properties
 
-  private(set) var router: (NSObjectProtocol & HomeRoutingLogic & HomeDataPassing)?
+  var interactor: HomeBusinessLogic?
+  var router: (HomeRoutingLogic & HomeDataPassing)?
 
   // MARK: - Private Properties
 
-  private var interactor: HomeBusinessLogic?
   private var users: [User] = []
-
-  // MARK: - UI Outlets
-
-  @IBOutlet private weak var tableUsers: UITableView!
 
   // MARK: - Init
 
@@ -67,17 +60,13 @@ final class HomeViewController: UIViewController {
 
   // MARK: - Requests
 
-  /// Отправляем запрос на загрузку постов в таблицу
   private func requestToFetchUsers() {
     let request = HomeModels.FetchUsers.Request()
-
     interactor?.fetchUsers(request)
   }
 
-  /// Выбрать пользователя в таблице
-  private func requestToSelectUser(index: Int) {
-    let request = HomeModels.SelectUser.Request(index: index)
-
+  private func requestToSelectUser(by indexPath: IndexPath) {
+    let request = HomeModels.SelectUser.Request(index: indexPath.row)
     interactor?.selectUser(request)
   }
 }
@@ -87,39 +76,37 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: HomeDisplayLogic {
 
   func displayFetchedUsers(_ viewModel: HomeModels.FetchUsers.ViewModel) {
-    if let fetchedUsers = viewModel.users {
-      users = fetchedUsers
-      tableUsers.reloadData()
-    }
-  }
-
-  func displaySelectedUser(_ viewModel: HomeModels.SelectUser.ViewModel) {
-    if viewModel.isSelected {
-      router?.routeToPosts()
-    }
+    users = viewModel.users
+    tableView.reloadData()
   }
 }
 
-// MARK: - UITableViewDataSource, UITableViewDelegate
+// MARK: - UITableViewDataSource
 
-extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+extension HomeViewController {
 
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return users.count
   }
 
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let user = users[indexPath.row]
     let cell = tableView.dequeueReusableCell(withIdentifier: "CellUser", for: indexPath)
 
     if let cellLabel = cell.textLabel {
-      cellLabel.text = user.username
+      cellLabel.text = user.name
     }
 
     return cell
   }
+}
 
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    requestToSelectUser(index: indexPath.row)
+// MARK: - UITableViewDelegate
+
+extension HomeViewController {
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    requestToSelectUser(by: indexPath)
+    router?.routeToPosts()
   }
 }

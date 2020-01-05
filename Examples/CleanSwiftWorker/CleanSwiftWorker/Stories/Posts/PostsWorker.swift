@@ -1,6 +1,6 @@
 //
 //  PostsWorker.swift
-//  CleanSwiftWorker
+//  CleanSwiftTests
 //
 //  Created by Aleksey Pleshkov on 15/06/2019.
 //  Copyright © 2019 Aleksey Pleshkov. All rights reserved.
@@ -8,40 +8,38 @@
 
 import Foundation
 
-struct PostsWorker {
+protocol PostsWorkingLogic {
+  /// Запрос к API на загрузку списка постов пользователя
+  func fetchPosts(userId: Int, _ complete: @escaping ([Post]?) -> Void)
+}
+
+final class PostsWorker: PostsWorkingLogic {
 
   // MARK: - Private Properties
 
   private let networkWorker = NetworkWorker()
   private let postsURL = URL(string: "https://jsonplaceholder.typicode.com/posts")
 
-  // MARK: - Public Methods
+  // MARK: - PostsWorkingLogic
 
-  /// Запрос к API на загрузку списка постов пользователя
-  ///
-  /// - Parameters:
-  ///   - userId: ID пользователя, посты которого нужно загрузить
-  ///   - complete: Возвращает список загруженных постов
-  func fetchPosts(userId: Int, _ complete: @escaping ([Post]?) -> Void) {
+  func fetchPosts(userId: Int, _ completion: @escaping ([Post]?) -> Void) {
     guard let postsURL = postsURL else {
-      complete(nil)
+      completion(nil)
       return
     }
 
-    let params = [
-      "userId": String(userId)
-    ]
+    let params = ["userId": String(userId)]
 
     networkWorker.sendRequest(to: postsURL, params: params) { (data, error) in
       guard let data = data else {
-        complete(nil)
+        completion(nil)
         return
       }
 
       let decoder = JSONDecoder()
       let posts = try? decoder.decode([Post].self, from: data)
 
-      complete(posts)
+      completion(posts)
     }
   }
 }
