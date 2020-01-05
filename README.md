@@ -2,6 +2,8 @@
 
 Examples and templates for iOS architecture Clean Swift
 
+![Clean Swift Scheme](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/Resources/cleanswift.jpg)
+
 # 🗄 Examples
 
 * [Router](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/Examples/CleanSwiftRouter). Example of work with Routers (Old segue version). 
