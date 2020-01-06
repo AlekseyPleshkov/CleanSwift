@@ -9,7 +9,7 @@
 import Foundation
 
 protocol HomeWorkingLogic {
-  /// Запрос к API на загрузку списка пользователей
+  /// Request to API for loading list of users
   func fetchUsers(_ completion: @escaping ([User]?) -> Void)
 }
 

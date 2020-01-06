@@ -10,7 +10,6 @@ import UIKit
 
 enum DetailModels {
 
-  /// Показать переданное сообщение из HomeDataStore
   enum ShowMessage {
     struct Request {
     }

@@ -9,7 +9,6 @@
 import UIKit
 
 protocol PostsDisplayLogic: class {
-  /// Отобразить загруженные посты пользователя в таблице
   func displayFetchedPosts(_ viewModel: PostsModels.FetchPosts.ViewModel)
 }
 

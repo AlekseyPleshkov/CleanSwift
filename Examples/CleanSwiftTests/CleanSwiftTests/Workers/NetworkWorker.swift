@@ -9,7 +9,7 @@
 import Foundation
 
 protocol NetworkWorkingLogic {
-  /// Отправка запроса к API
+  /// Main request to API
   func sendRequest(to: URL, params: [String: String], completion: @escaping (Data?, Error?) -> Void)
 }
 

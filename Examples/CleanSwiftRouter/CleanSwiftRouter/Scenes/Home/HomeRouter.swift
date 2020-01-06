@@ -8,10 +8,7 @@
 
 import UIKit
 
-/// Почемен как @objc для создания селектора
-/// в методе prepare во View Controller'e
 @objc protocol HomeRoutingLogic {
-  /// Переход на Detail View Controller
   func routeToDetail(segue: UIStoryboardSegue?)
 }
 
@@ -32,26 +29,14 @@ final class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing {
 
   func routeToDetail(segue: UIStoryboardSegue?) {
     if let segue = segue {
-      // Данный участок кода срабатывает
-      // только при переходе по Segue
-
-      // Получаем ссылку на Detail View Controller
-      // И на его Data Store в Router'e
       guard
         let homeDS = dataStore,
         let detailVC = segue.destination as? DetailViewController,
         var detailDS = detailVC.router?.dataStore
         else { fatalError("Fail route to detail") }
 
-      // Далее, полученные данные, мы пробрасываем в метод,
-      // который "знает" как передавать данные
       passDataToDetail(source: homeDS, destination: &detailDS)
     } else {
-      // Данный участок кода срабатывает,
-      // когда вызывается переход без Segue
-
-      // Иницилизируем Detail View Controller из Storyboard'a
-      // И получаем ссылку на его Data Store в Router'e
       guard
         let viewController = viewController,
         let homeDS = dataStore,
@@ -61,8 +46,6 @@ final class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing {
         else { fatalError("Fail route to detail") }
 
       passDataToDetail(source: homeDS, destination: &detailDS)
-
-      // Метод, который отвечает за переход и "знает" как это делать
       navigateToDetail(source: viewController, destination: detailVC)
     }
   }
@@ -75,11 +58,7 @@ final class HomeRouter: NSObject, HomeRoutingLogic, HomeDataPassing {
 
   // MARK: - Passing data
 
-  /// Параметр destination помечен как inout,
-  /// что бы избежать мутации Data Store и захвата ссылки при передаче данных
   private func passDataToDetail(source: HomeDataStore, destination: inout DetailDataStore) {
-
-    // Передаем текст сообщения из HomeDataStore в DetailDataStore
     destination.message = source.message
   }
 }

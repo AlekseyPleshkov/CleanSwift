@@ -10,7 +10,6 @@ import UIKit
 
 enum HomeModels {
 
-  /// Обновление текста в Text Field нашей сцены
   enum UpdateMessage {
     
     struct Request {

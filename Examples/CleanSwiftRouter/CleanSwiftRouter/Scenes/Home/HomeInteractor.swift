@@ -30,9 +30,7 @@ final class HomeInteractor: HomeBusinessLogic, HomeDataStore {
   func updateMessage(_ request: HomeModels.UpdateMessage.Request) {
     let response = HomeModels.UpdateMessage.Response(message: request.message)
 
-    // Сохраняем присланное сообщение в Data Store
-    message = request.message
-    
+    message = request.message    
     presenter?.presentUpdateMessage(response)
   }
 }

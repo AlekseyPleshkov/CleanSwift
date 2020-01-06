@@ -9,10 +9,7 @@
 import Foundation
 
 protocol HomeBusinessLogic {
-  /// Запрос на загрузку постов
   func fetchUsers(_ request: HomeModels.FetchUsers.Request)
-
-  /// Выбрать пользователя из списка по индексу
   func selectUser(_ request: HomeModels.SelectUser.Request)
 }
 

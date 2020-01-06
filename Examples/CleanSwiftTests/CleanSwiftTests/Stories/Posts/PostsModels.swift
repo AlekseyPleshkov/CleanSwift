@@ -10,7 +10,7 @@ import UIKit
 
 enum PostsModels {
 
-  // MARK: - Загружаем посты пользователя
+  // MARK: - Fetch selected user posts
   
   enum FetchPosts {
     struct Request {}

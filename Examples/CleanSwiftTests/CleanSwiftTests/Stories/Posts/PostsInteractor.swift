@@ -9,7 +9,6 @@
 import Foundation
 
 protocol PostsBusinessLogic {
-  /// Загрузить список постов пользователя
   func fetchPosts(_ request: PostsModels.FetchPosts.Request)
 }
 

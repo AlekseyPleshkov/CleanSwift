@@ -80,8 +80,6 @@ final class DetailViewController: UIViewController {
 
   // MARK: - Requests
 
-  /// Запускаем VIP цикл для отображения сообщения на экране
-  /// Которые мы передали из HomeDataStore
   private func showMessage() {
     let request = DetailModels.ShowMessage.Request()
 

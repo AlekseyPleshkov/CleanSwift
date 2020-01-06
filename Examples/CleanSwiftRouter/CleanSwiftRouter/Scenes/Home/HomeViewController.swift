@@ -9,7 +9,6 @@
 import UIKit
 
 protocol HomeDisplayLogic: class {
-  /// Обновление текста сообщения
   func displayUpdateMessage(_ viewModel: HomeModels.UpdateMessage.ViewModel)
 }
 
@@ -43,8 +42,6 @@ final class HomeViewController: UIViewController {
     interactor.presenter = presenter
     presenter.viewController = self
 
-    // Присваиваем в Router ссылки на View Controller
-    // и Data Store, под который подписан Interactor
     router.viewController = self
     router.dataStore = interactor
 
@@ -57,12 +54,10 @@ final class HomeViewController: UIViewController {
   @IBOutlet weak var buttonShowDetailWithSegue: UIButton!
   @IBOutlet weak var buttonShowDetailWithoutSegue: UIButton!
 
-  /// Отлавливаем событие изменения текста в Text Field
   @IBAction func fieldMessageDidChange(_ sender: UITextField) {
     updateMessage(message: sender.text)
   }
 
-  /// Переход на Detail View Controller без Segue
   @IBAction func buttonShowDetailWithoutSegue(_ sender: Any) {
     router?.routeToDetail(segue: nil)
   }
@@ -81,15 +76,9 @@ final class HomeViewController: UIViewController {
   // MARK: - Routing
 
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    // Если у Segue есть идентификатор
     if let scene = segue.identifier {
-
-      // Создаем селектор, для вызова метода с этим именем и параметрами в Router
-      // router?.routeToNAME(segue:)
       let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-
-      // Если есть метод с таким селектором,
-      // вызываем его и передаем в него Segue
+      
       if let router = router, router.responds(to: selector) {
         router.perform(selector, with: segue)
       }
@@ -98,7 +87,6 @@ final class HomeViewController: UIViewController {
 
   // MARK: - Requests
 
-  /// Метод для создания запроса в Interactor с текстом сообщения
   private func updateMessage(message: String?) {
     let request = HomeModels.UpdateMessage.Request(message: message)
 
@@ -113,9 +101,6 @@ final class HomeViewController: UIViewController {
 extension HomeViewController: HomeDisplayLogic {
 
   func displayUpdateMessage(_ viewModel: HomeModels.UpdateMessage.ViewModel) {
-
-    // Обновляем доступность кнопок
-    // в зависимости от успешности обновления сообщения
     buttonShowDetailWithSegue.isEnabled = viewModel.isUpdated
     buttonShowDetailWithoutSegue.isEnabled = viewModel.isUpdated
   }

@@ -9,7 +9,6 @@
 import UIKit
 
 protocol HomeDisplayLogic: class {
-  /// Отобразить список загруженных пользователей
   func displayFetchedUsers(_ viewModel: HomeModels.FetchUsers.ViewModel)
 }
 

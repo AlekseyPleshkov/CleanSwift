@@ -23,12 +23,10 @@ final class HomePresenter: HomePresentationLogic {
   // MARK: - HomePresentationLogic
 
   func presentUpdateMessage(_ response: HomeModels.UpdateMessage.Response) {
-    // Проверяем сообщение на соответствие нашим требованиям
     let message = response.message ?? String()
     let isUpdated = !message.isEmpty && message.count > 4
-
-    // Сохраняем результат во View Model и отправляем на View Controller
     let viewModel = HomeModels.UpdateMessage.ViewModel(isUpdated: isUpdated)
+    
     viewController?.displayUpdateMessage(viewModel)
   }
 }

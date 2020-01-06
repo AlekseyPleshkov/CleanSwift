@@ -9,7 +9,7 @@
 import Foundation
 
 protocol PostsWorkingLogic {
-  /// Запрос к API на загрузку списка постов пользователя
+  /// Request to API for loading list of user posts
   func fetchPosts(userId: Int, _ complete: @escaping ([Post]?) -> Void)
 }
 

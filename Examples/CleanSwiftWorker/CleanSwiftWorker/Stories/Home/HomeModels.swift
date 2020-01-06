@@ -10,7 +10,7 @@ import UIKit
 
 enum HomeModels {
 
-  // MARK: - Загрузка списка пользователей и отображение в таблице
+  // MARK: - Fetch list of user and display in table
   
   enum FetchUsers {
     struct Request {}
@@ -24,7 +24,7 @@ enum HomeModels {
     }
   }
 
-  // MARK: - Выбрать пользователя по индексу из списка
+  // MARK: - Select user by index
   
   enum SelectUser {
     struct Request {

@@ -9,7 +9,6 @@
 import Foundation
 
 protocol HomePresentationLogic {
-  /// Подготовка для отображения списка загруженных пользователей
   func presentFetchedUsers(_ response: HomeModels.FetchUsers.Response)
 }
 
@@ -22,10 +21,7 @@ final class HomePresenter: HomePresentationLogic {
   // MARK: - HomePresentationLogic
 
   func presentFetchedUsers(_ response: HomeModels.FetchUsers.Response) {
-    // Для примера, сортируем пользователей по возрастанию ID
-    let sortedUsers = response.users.sorted { (userFirst, userSecond) in
-      return userFirst.id < userSecond.id
-    }
+    let sortedUsers = response.users.sorted { $0.id < $1.id }
     let viewModel = HomeModels.FetchUsers.ViewModel(users: sortedUsers)
 
     viewController?.displayFetchedUsers(viewModel)

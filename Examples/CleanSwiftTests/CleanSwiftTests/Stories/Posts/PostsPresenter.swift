@@ -9,7 +9,6 @@
 import Foundation
 
 protocol PostsPresentationLogic {
-  /// Подготовка загруженного списка пользователей к отображению
   func presentFetchedPosts(_ response: PostsModels.FetchPosts.Response)
 }
 
@@ -22,9 +21,7 @@ final class PostsPresenter: PostsPresentationLogic {
   // MARK: - PostsPresentationLogic
 
   func presentFetchedPosts(_ response: PostsModels.FetchPosts.Response) {
-    let sortedPosts = response.posts.sorted { (firstPost, secondPost) in
-      return firstPost.title.count < secondPost.title.count
-    }
+    let sortedPosts = response.posts.sorted { $0.title.count < $1.title.count }
     let viewModel = PostsModels.FetchPosts.ViewModel(owner: response.owner, posts: sortedPosts)
 
     viewController?.displayFetchedPosts(viewModel)
