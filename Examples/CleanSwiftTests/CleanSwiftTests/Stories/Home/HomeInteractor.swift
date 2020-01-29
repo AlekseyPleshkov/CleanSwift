@@ -20,7 +20,7 @@ protocol HomeDataStore {
 
 final class HomeInteractor: HomeBusinessLogic, HomeDataStore {
 
-  // MARK: - Public
+  // MARK: - Public Properties
 
   var presenter: HomePresentationLogic?
   lazy var worker: HomeWorkingLogic = HomeWorker()

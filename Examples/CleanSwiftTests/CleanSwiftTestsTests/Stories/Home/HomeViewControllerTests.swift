@@ -66,6 +66,7 @@ final class HomeViewControllerTests: XCTestCase {
     let viewModel = HomeModels.FetchUsers.ViewModel(users: users)
     
     sut.tableView = tableViewSpy
+    sut.tableView.dataSource = sut
     sut.displayFetchedUsers(viewModel)
     
     XCTAssertTrue(tableViewSpy.isCalledReloadData, "Not started tableView.reloadData")
