@@ -15,6 +15,9 @@ Examples and templates for iOS architecture Clean Swift
 ##### [Scene Template](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/XCodeTemplates/Clean%20Swift%20Scene.xctemplate)
 Template for creating new scene with Storyboard, ViewController, Interactor, Presenter, Models, Router and Worker.
 
+##### [Xib Scene Template](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/XCodeTemplates/Clean%20Swift%20Scene%20Xib.xctemplate)
+Template for creating new scene with Xib, ViewController, Interactor, Presenter, Models, Router, Worker and scene Builder.
+
 ##### [Unit Tests Template](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/XCodeTemplates/Clean%20Swift%20Tests.xctemplate)
 Template for creating tests files for exists scene.
 
