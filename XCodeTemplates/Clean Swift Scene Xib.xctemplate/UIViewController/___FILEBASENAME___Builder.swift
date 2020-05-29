@@ -1,14 +1,8 @@
-//
-//  DetailBuilder.swift
-//  NewCleanSwift
-//
-//  Created by Aleksey Pleshkov on 10.02.2020.
-//  Copyright © 2020 Aleksey Pleshkov. All rights reserved.
-//
+//___FILEHEADER___
 
 import UIKit
 
-protocol ___VARIABLE_sceneName___BuildingLogic: class {
+protocol ___VARIABLE_sceneName___BuildingLogic: AnyObject {
   func makeScene(parent: UIViewController?) -> ___VARIABLE_sceneName___ViewController
 }
 
