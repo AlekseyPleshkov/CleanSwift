@@ -12,6 +12,9 @@ Examples and templates for iOS architecture Clean Swift
 
 # 📦 Templates
 
+##### [SnapKit Scene Template](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/XCodeTemplates/Clean%20Swift%20Scene%20SnapKit.xctemplate)
+Template for creating new scene with View (SnapKit), ViewController, Interactor, Presenter, Models, Router, Worker and scene Builder.
+
 ##### [Scene Template](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/XCodeTemplates/Clean%20Swift%20Scene.xctemplate)
 Template for creating new scene with Storyboard, ViewController, Interactor, Presenter, Models, Router and Worker.
 
@@ -23,8 +26,7 @@ Template for creating tests files for exists scene.
 
 #### Install
 
-1) Open path `/Applications/Xcode.app/Contents/Developer/Library/Xcode/Templates`. 
-2) Create folder `Clean Swift`.
-3) Copy folders from [XCodeTemplates](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/XCodeTemplates) to created `Clean Swift`.
-4) Restart XCode.
+1) Open path `~/Library/Developer/Xcode/Templates/File Templates`. 
+2) Copy folders from [XCodeTemplates](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/XCodeTemplates) to `File Templates`.
+3) Restart XCode.
 
