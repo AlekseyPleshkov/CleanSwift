@@ -2,7 +2,7 @@
 
 @MainActor
 protocol ___VARIABLE_sceneName___PresentationLogic: Sendable {
-    
+    func presentFetchedData(_ response: ___VARIABLE_sceneName___Flow.FetchData.Response)
 }
 
 final class ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLogic {
@@ -17,4 +17,8 @@ final class ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___Presentat
     }
     
     // MARK: - ___VARIABLE_sceneName___PresentationLogic
+
+    func presentFetchedData(_ response: ___VARIABLE_sceneName___Flow.FetchData.Response) {
+        state?.displayFetchedData(___VARIABLE_sceneName___Flow.FetchData.ViewModel())
+    }
 }

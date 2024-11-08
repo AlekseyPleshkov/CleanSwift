@@ -8,9 +8,7 @@ struct ___VARIABLE_sceneName___View: View {
     @State
     private var state: ___VARIABLE_sceneName___State
     private let interactor: ___VARIABLE_sceneName___BusinessLogic
-    
-    private let appearance = Appearance()
-    
+
     // MARK: - Initializers
     
     init(
@@ -27,25 +25,16 @@ struct ___VARIABLE_sceneName___View: View {
         VStack {
             
         }
-        .onAppear {
-            
+        .task {
+            await interactor.fetchData(___VARIABLE_sceneName___Flow.FetchData.Request())
         }
     }
 }
 
-// MARK: - Appearance
+// MARK: - Preview
 
-private extension ___VARIABLE_sceneName___View {
-    struct Appearance {
-    }
-}
-
-// MARK: - PreviewProvider
-
-struct ___VARIABLE_sceneName___View_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationStack {
-            ___VARIABLE_sceneName___Builder().makeScene(with: ___VARIABLE_sceneName___Builder.Context())
-        }
+#Preview {
+    NavigationStack {
+        ___VARIABLE_sceneName___Builder().makeScene(with: ___VARIABLE_sceneName___Builder.Context())
     }
 }

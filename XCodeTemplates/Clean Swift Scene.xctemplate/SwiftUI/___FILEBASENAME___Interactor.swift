@@ -1,10 +1,10 @@
 //___FILEHEADER___
 
 protocol ___VARIABLE_sceneName___BusinessLogic: Sendable {
-    
+    func fetchData(_ request: ___VARIABLE_sceneName___Flow.FetchData.Request) async
 }
 
-protocol ___VARIABLE_sceneName___DataStorable: Sendable {
+protocol ___VARIABLE_sceneName___DataStorable: Sendable, Actor {
     
 }
 
@@ -25,5 +25,7 @@ final actor ___VARIABLE_sceneName___Interactor: ___VARIABLE_sceneName___Business
     
     // MARK: - ___VARIABLE_sceneName___BusinessLogic
     
-    //
+    func fetchData(_ request: ___VARIABLE_sceneName___Flow.FetchData.Request) async {
+        await presenter.presentFetchedData(___VARIABLE_sceneName___Flow.FetchData.Response())
+    }
 }
