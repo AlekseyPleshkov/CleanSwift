@@ -8,17 +8,17 @@ protocol ___VARIABLE_sceneName___PresentationLogic: Sendable {
 final class ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___PresentationLogic {
     // MARK: - Private Properties
     
-    private weak var state: ___VARIABLE_sceneName___DisplayLogic?
+    private let state: ___VARIABLE_sceneName___State
     
     // MARK: - Initializers
     
-    init(state: ___VARIABLE_sceneName___DisplayLogic) {
+    init(state: ___VARIABLE_sceneName___State) {
         self.state = state
     }
     
     // MARK: - ___VARIABLE_sceneName___PresentationLogic
 
     func presentFetchedData(_ response: ___VARIABLE_sceneName___Flow.FetchData.Response) {
-        state?.displayFetchedData(___VARIABLE_sceneName___Flow.FetchData.ViewModel())
+        state.isLoaded = true
     }
 }

@@ -11,8 +11,8 @@ Template to create new scene with SwiftUI or UIKit (creates view, interactor, pr
 
 #### Install
 
-1) Open path `~/Library/Developer/Xcode/Templates/File Templates`. 
-2) Copy folders from [XCodeTemplates](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/XCodeTemplates) to `File Templates`.
+1) Open path `~/Library/Developer/Xcode/Templates`. 
+2) Copy folders from [XCodeTemplates](https://github.com/AlekseyPleshkov/CleanSwift/tree/master/XCodeTemplates) to `Templates`.
 3) Restart XCode.
 
 # 🗄 Examples (Legacy)
